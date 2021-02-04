@@ -34,7 +34,7 @@ Object.keys(db).forEach(modelName => {
 
 const { user, smokeplace, messages, likeordislike} = sequelize.models;
 
-// //! 일 대 다 
+// //! 일 대 다 please
 user.hasMany(smokeplace); 
 smokeplace.belongsTo(user);
 
