@@ -24,5 +24,8 @@
     "mysql2": "^2.2.5",
     "sequelize": "^6.5.0",
     "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {
+    "body-parser": "^1.19.0"
   }
 }
