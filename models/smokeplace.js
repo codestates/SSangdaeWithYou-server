@@ -1,7 +1,5 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class smokePlace extends Model {
     /**
@@ -15,17 +13,19 @@ module.exports = (sequelize, DataTypes) => {
       //   targetKey: 'id'
       // });
     }
-  };
-  smokePlace.init({
-    placeName: DataTypes.STRING,
-    latitude: DataTypes.INTEGER,
-    longitude: DataTypes.INTEGER,
-    comment: DataTypes.STRING,
-    userId: DataTypes.INTEGER
-    
-  }, {
-    sequelize,
-    modelName: 'smokePlace',
-  });
+  }
+  smokePlace.init(
+    {
+      placeName: DataTypes.STRING,
+      latitude: DataTypes.STRING,
+      longitude: DataTypes.STRING,
+      comment: DataTypes.STRING,
+      userId: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      modelName: 'smokePlace',
+    }
+  );
   return smokePlace;
 };

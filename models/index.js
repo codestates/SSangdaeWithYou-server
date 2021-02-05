@@ -1,6 +1,6 @@
 'use strict';
 
-require("dotenv").config();
+require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
@@ -13,36 +13,45 @@ let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+  sequelize = new Sequelize(
+    config.database,
+    config.username,
+    config.password,
+    config
+  );
 }
 
-fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+fs.readdirSync(__dirname)
+  .filter((file) => {
+    return (
+      file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
+    );
   })
-  .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+  .forEach((file) => {
+    const model = require(path.join(__dirname, file))(
+      sequelize,
+      Sequelize.DataTypes
+    );
     db[model.name] = model;
   });
 
-Object.keys(db).forEach(modelName => {
+Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
 });
 
-const { user, smokeplace, messages, likeordislike} = sequelize.models;
+const { user, smokePlace, messages, likeOrDislike } = sequelize.models;
 
 // //! 일 대 다 please
-user.hasMany(smokeplace); 
-smokeplace.belongsTo(user);
+user.hasMany(smokePlace);
+smokePlace.belongsTo(user);
 
-user.belongsToMany(smokeplace, { through: likeordislike });
-smokeplace.belongsToMany(user, { through: likeordislike });
+user.belongsToMany(smokePlace, { through: likeOrDislike });
+smokePlace.belongsToMany(user, { through: likeOrDislike });
 
-user.belongsToMany(smokeplace, { through: messages });
-smokeplace.belongsToMany(user, { through: messages });
+user.belongsToMany(smokePlace, { through: messages });
+smokePlace.belongsToMany(user, { through: messages });
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
