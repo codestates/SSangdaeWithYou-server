@@ -8,17 +8,18 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    //await queryInterface.addColumn('smokePlaces', 'userId', Sequelize.INTEGER);
+    await queryInterface.addColumn('smokePlaces', 'userId', Sequelize.INTEGER);
     await queryInterface.addConstraint('smokePlaces', {
       fields: ['userId'],
       type: 'foreign key',
       name: 'fk',
-      references: { //Required field
+      references: {
+        //Required field
         table: 'users',
-        field: 'id'
+        field: 'id',
       },
       onDelete: 'cascade',
-      onUpdate: 'cascade'
+      onUpdate: 'cascade',
     });
   },
 
@@ -31,5 +32,5 @@ module.exports = {
      */
     await queryInterface.removeConstraint('smokePlaces', 'fk');
     await queryInterface.removeColumn('smokePlaces', 'userId');
-  }
+  },
 };
