@@ -2,7 +2,7 @@ require('dotenv').config();
 module.exports = {
   development: {
     username: 'sosick0418',
-    password: 'whdrnjs1!',
+    password: process.env.DATABASE_PASSWORD,
     database: 'first-project-database',
     host: 'first-project-database.cvzikveoyguc.us-east-2.rds.amazonaws.com',
     dialect: 'mysql',
