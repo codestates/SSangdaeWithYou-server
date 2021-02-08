@@ -1,31 +1,18 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('smokePlaces', {
+    await queryInterface.createTable('likeOrDislikes', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      placeName: {
-        type: Sequelize.STRING
-      },
-      latitude: {
+      isLike: {
         type: Sequelize.INTEGER
       },
-      longitude: {
+      isDislike: {
         type: Sequelize.INTEGER
-      },
-      comment: {
-        type: Sequelize.STRING
-      },
-      userId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'users',
-          key: 'id'
-        }
       },
       createdAt: {
         allowNull: false,
@@ -38,6 +25,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('smokePlaces');
+    await queryInterface.dropTable('likeOrDislikes');
   }
 };
