@@ -1,5 +1,4 @@
 const { smokePlace, user, likeOrDislike } = require('../models');
-
 module.exports = {
   likeBtn: (req, res) => {
     const { placeId, userId } = req.body;
@@ -7,7 +6,7 @@ module.exports = {
     const numberUserId = parseInt(userId);
     likeOrDislike
       .findOne({
-        attributes: ['userId', 'placeId', 'isLike', 'isDislike'],
+        attributes: ['userId', 'smokePlaceId', 'isLike', 'isDislike'],
         where: {
           placeId: numberPlaceId,
           userId: numberUserId,
@@ -51,14 +50,13 @@ module.exports = {
       })
       .catch((err) => res.status(400).send(err));
   },
-
   disLikeBtn: (req, res) => {
     const { placeId, userId } = req.body;
     const numberPlaceId = parseInt(placeId);
     const numberUserId = parseInt(userId);
     likeOrDislike
       .findOne({
-        attributes: ['userId', 'placeId', 'isLike', 'isDislike'],
+        attributes: ['userId', 'smokePlaceId', 'isLike', 'isDislike'],
         where: {
           placeId: numberPlaceId,
           userId: numberUserId,

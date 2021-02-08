@@ -1,4 +1,39 @@
 {
+<<<<<<< HEAD
+  "name": "ssangdaewithyou-server",
+  "version": "1.0.0",
+  "description": "first_Project_Server",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hyunsoo-dev/SSangdaeWithYou-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hyunsoo-dev/SSangdaeWithYou-server/issues"
+  },
+  "homepage": "https://github.com/Hyunsoo-dev/SSangdaeWithYou-server#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.7",
+    "sequelize": "^6.5.0",
+    "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {
+    "body-parser": "^1.19.0"
+  }
+=======
     "name": "ssangdaewithyou-server",
     "version": "1.0.0",
     "description": "first_Project_Server",
@@ -30,4 +65,5 @@
         "body-parser": "^1.19.0",
         "nodemon": "^2.0.7"
     }
+>>>>>>> ba13847262512c471ead178557af7c3df41652c6
 }
