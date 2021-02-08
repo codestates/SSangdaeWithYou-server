@@ -25,6 +25,7 @@ module.exports = {
             'distance',
           ],
         ],
+        order: 'distance DESC',
         limit: 10,
       })
       .then(async (place) => {

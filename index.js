@@ -6,6 +6,7 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const port = 5000;
+const controller = require('../SSangdaeWithYou-server/controllers/listDetailButtons');
 
 const controllerSignup = require('./controllers/userSignup')
 const controllerInfo = require('./controllers/userInfo');
