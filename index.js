@@ -20,8 +20,8 @@ app.use(
       path: '/',
       maxAge: 24 * 6 * 60 * 10000,
       sameSite: 'none',
-      httpOnly: true,
-      secure: false
+      httpOnly: true,  
+      secure: false  //https만 허용
     },
   })
 )
@@ -38,5 +38,4 @@ app.use(cors({
 // process.on('uncaughtException', (err) => {console.log(err)})
 app.use('/', route);
 
-app.listen(port);
 module.exports = app;
