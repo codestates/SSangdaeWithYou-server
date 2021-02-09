@@ -10,7 +10,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
-<<<<<<< HEAD
   };
   likeOrDislike.init({
     isLike: DataTypes.INTEGER,
@@ -22,23 +21,3 @@ module.exports = (sequelize, DataTypes) => {
   return likeOrDislike;
 };
 
-// User , place 의 모델 만듦 => 관계 설정 해주고 끝 => 마이그레이션 파일 만들고 createTable로 조인 테이블 만들고 외래키 설정도 해준다.
-// db:migrate를 해주면 끝.
-=======
-  }
-  likeOrDislike.init(
-    {
-      userId: DataTypes.INTEGER,
-      placeId: DataTypes.INTEGER,
-      isLike: DataTypes.INTEGER,
-      isDislike: DataTypes.INTEGER,
-      smokePlaceId: DataTypes.INTEGER,
-    },
-    {
-      sequelize,
-      modelName: 'likeOrDislike',
-    }
-  );
-  return likeOrDislike;
-};
->>>>>>> ba13847262512c471ead178557af7c3df41652c6
