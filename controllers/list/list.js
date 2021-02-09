@@ -1,4 +1,4 @@
-const { smokeplace } = require('../models');
+const { smokeplace } = require('../../models');
 
 module.exports = {
   listController: async (req, res) => {

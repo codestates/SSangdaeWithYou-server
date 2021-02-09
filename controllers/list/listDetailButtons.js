@@ -1,4 +1,4 @@
-const { smokePlace, user, likeOrDislike } = require('../models');
+const { smokePlace, user, likeOrDislike } = require('../../models');
 module.exports = {
   likeBtn: (req, res) => {
     const { placeId, userId } = req.body;

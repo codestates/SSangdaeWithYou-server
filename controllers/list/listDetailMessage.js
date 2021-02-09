@@ -1,4 +1,4 @@
-const { smokeplace, user, message } = require('../models')
+const { smokeplace, user, message } = require('../../models');
 module.exports = {
   inputMessage: async (req, res) => {
     if (!req.session.identifier) {
