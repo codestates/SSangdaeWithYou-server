@@ -13,7 +13,7 @@ const controllerBtn = require('../controllers/list/listDetailButtons')
 const controllerUpload = require('../controllers/list/placeUpload')
 const controllerinputMessage = require('../controllers/list/listDetailMessage')
 const controllerCallback = require('../controllers/list/callback');
-
+const controllerList = require('../controllers/list/list');
 
 //! user
 router.post('/user/signup', controllerSignup.signup);
@@ -22,6 +22,7 @@ router.post('/user/sign', controllerSign.sign);
 router.post('/user/signout', controllerSignout.signout)
 
 //! list
+router.post('/list', controllerList.listController)
 router.post('/list/detail/getLikeInfo', controllerDetail.getLikeInfo)
 router.post('/list/detail/getDislikeInfo', controllerDetail.getDislikeInfo)
 router.post('/list/detail/info', controllerDetail.getDetail)
