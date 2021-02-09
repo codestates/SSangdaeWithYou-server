@@ -1,4 +1,4 @@
-const { smokePlace, user } = require('../models');
+const { smokePlace, user } = require('../../models');
 
 module.exports = {
   placeUpload: (req, res) => {

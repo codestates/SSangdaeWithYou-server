@@ -1,4 +1,4 @@
-const { user, smokePlace, message, likeOrDislike } = require('../models');
+const { user, smokePlace, message, likeOrDislike } = require('../../models');
 
 module.exports = {
   getDetail: async (req, res) => {

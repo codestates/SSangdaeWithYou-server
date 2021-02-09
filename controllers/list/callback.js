@@ -2,7 +2,7 @@
 
 // const clientID = process.env.KAKAO_RESTAPI_KEY;
 // const clientSecret = process.env.KAKAO_RESTAPI_SECRET;
-const { user } = require('../models');
+const { user } = require('../../models');
 const axios = require('axios');
 module.exports = async (req, res) => {
   const access = await axios({
@@ -40,7 +40,7 @@ module.exports = async (req, res) => {
       await user.findOrCreate({
         where: { email },
         defaults : { username, nickname }
-      })
+      })``
       .then(async ([user, created]) => {
         if (!created) {
           req.session.identifier = username;
