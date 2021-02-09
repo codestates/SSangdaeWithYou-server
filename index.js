@@ -61,16 +61,7 @@ app.post('/list/detail/inputMessage', controllerinputMessage.inputMessage)
 
 app.post('/callback',controllerCallback);
 
-const server = https
-  .createServer(
-    {
-      key: fs.readFileSync('/Users/hyunsoo/Desktop/key.pem', 'utf-8'),
-      cert: fs.readFileSync('/Users/hyunsoo/Desktop/cert-pem', 'utf-8'),
-    },
-    app.use('/', (req, res) => {
-      res.send('Congrats! You made https server now :)');    })
-  )
-  .listen(port);
+app.listen(port);
 
 module.exports = server;
 
