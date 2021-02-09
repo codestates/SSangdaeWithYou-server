@@ -15,11 +15,6 @@ const controllerinputMessage = require('../controllers/list/listDetailMessage')
 const controllerCallback = require('../controllers/list/callback');
 
 
-router.get('/', (req, res) => {
-  console.log('웰컴');
-  res.sendStatus(200);
-})
-
 //! user
 router.post('/user/signup', controllerSignup.signup);
 router.post('/user/info', controllerInfo.userinfo);
