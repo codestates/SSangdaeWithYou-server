@@ -20,6 +20,9 @@ router.use('/', function (req, res, next) {
   next();
 });
 
+router.get('/', (req, res) => {
+  res.sendStatus(200);
+})
 
 //! user
 router.post('/user/signup', controllerSignup.signup);
