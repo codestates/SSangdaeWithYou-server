@@ -62,6 +62,3 @@ app.post('/list/detail/inputMessage', controllerinputMessage.inputMessage)
 app.post('/callback',controllerCallback);
 
 app.listen(port);
-
-module.exports = server;
-
