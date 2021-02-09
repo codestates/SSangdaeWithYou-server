@@ -2,11 +2,10 @@ const { user, smokePlace, message, likeOrDislike } = require('../../models');
 
 module.exports = {
   getDetail: async (req, res) => {
+    // console.log("id2    : " + req.session.id)
     if (!req.session.identifier) {
       res.sendStatus(400);
     } else {
-
-   
     // placeName, comment, nickname, => 1 : N
     const { placeId, userId } = req.body; 
     const info = await user.findAll({ 

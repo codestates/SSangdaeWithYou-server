@@ -1,15 +1,13 @@
 const { smokeplace, user, message } = require('../../models');
 module.exports = {
   inputMessage: async (req, res) => {
-    if (!req.session.identifier) {
-      res.sendStatus(400);
-    } else {
 
     const { text, placeId } = req.body;
-    console.log(req.session)
+    // console.log(req.session)
 
     if (!req.session.identifier) {
       res.status(404).send('로그인 후 이용하세요');
+
     } else {
       const username = req.session.identifier;
       
@@ -31,5 +29,5 @@ module.exports = {
       res.status(200).send('메세지가 생성되었습니다.');
     }
     
-  }},
+  },
 };

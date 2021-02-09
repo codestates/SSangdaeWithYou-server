@@ -18,8 +18,8 @@ module.exports = {
       res.status(404).send('존재하지 않는 사용자 입니다.')
     } else {
       // 회원이라면 
-      // console.log(userInfo.dataValues.id)
-      req.session.identifier = userInfo.dataValues.username; // 세션에 
+       req.session.identifier = userInfo.dataValues.username; // 세션에 
+      //  console.log("id1   " + req.session.id)
       res.status(200).send('로그인 성공')
     }
   }
