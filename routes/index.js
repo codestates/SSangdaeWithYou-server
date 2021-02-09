@@ -15,12 +15,8 @@ const controllerinputMessage = require('../controllers/list/listDetailMessage')
 const controllerCallback = require('../controllers/list/callback');
 
 
-router.use('/', function (req, res, next) {
-  console.log("웰컴!")
-  next();
-});
-
 router.get('/', (req, res) => {
+  console.log('웰컴');
   res.sendStatus(200);
 })
 
