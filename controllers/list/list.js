@@ -1,4 +1,4 @@
-const { smokeplace } = require('../../models');
+const { smokePlace, sequelize } = require('../../models');
 
 module.exports = {
   listController: async (req, res) => {
@@ -7,7 +7,7 @@ module.exports = {
     const lat = parseFloat(req.body.latitude);
     const lng = parseFloat(req.body.longitude);
 
-    smokeplace
+    smokePlace
       .findAll({
         attributes: [
           'id',
@@ -25,7 +25,7 @@ module.exports = {
             'distance',
           ],
         ],
-        order: 'distance DESC',
+        orderBy: 'distance DESC',
         limit: 10,
       })
       .then(async (place) => {

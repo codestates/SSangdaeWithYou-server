@@ -23,7 +23,7 @@ module.exports = {
         if (!created) {
           return res.status(400).send('이미 추가된 장소입니다');
         } else {
-          res.statsu(200).send('리스트가 추가되었습니다');
+          res.status(200).send('리스트가 추가되었습니다');
         }
         const data = await smokeplace.get({ plain: true });
         res.status(200).send('리스트가 추가되었습니다');

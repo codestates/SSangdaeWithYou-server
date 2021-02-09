@@ -7,7 +7,7 @@ module.exports = {
       res.sendStatus(400);
     } else {
     // placeName, comment, nickname, => 1 : N
-    const { placeId, userId } = req.body; 
+    const { placeId } = req.body; 
     const info = await user.findAll({ 
       attributes: ['nickname'],
       include:[{
@@ -19,7 +19,7 @@ module.exports = {
       }]
       
     })
-    .catch(err => console.log(err))
+    .catch(err => res.status(400).send(err))
     if (info) {
       let result = Object.assign({nickname: info[0].dataValues.nickname}, info[0].dataValues.smokePlaces[0].dataValues);
       console.log(result)

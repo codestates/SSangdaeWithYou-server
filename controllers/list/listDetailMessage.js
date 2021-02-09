@@ -16,7 +16,7 @@ module.exports = {
           username: username,
         },
       })
-      .catch(err => console.log(err))
+      .catch(err => res.status(400).send("입력값이 잘못되었습니다"));
 
       console.log("id :" + userData)
       const result = await message.create({
@@ -24,7 +24,7 @@ module.exports = {
         userId: userData.dataValues.id,
         message: text,
       })
-      .catch(err => console.log(err));
+      .catch(err => res.status(400).send("입력값이 잘못되었습니다."));
   
       res.status(200).send('메세지가 생성되었습니다.');
     }
