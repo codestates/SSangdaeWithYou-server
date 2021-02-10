@@ -40,14 +40,17 @@ module.exports = async (req, res) => {
       await user.findOrCreate({
         where: { email },
         defaults : { username, nickname }
-      })``
-      .then(async ([user, created]) => {
+      })
+      .then(([user, created]) => {
         if (!created) {
           req.session.identifier = username;
+          res.sendStatus(200);
         } else {
           req.session.identifier = username;
+          res.sendStatus(200);
         }
       })
       .catch(err =>  res.sendStatus(400));
       })
+      .catch(err => res.sendStatus(400));
     }
