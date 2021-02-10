@@ -32,5 +32,5 @@ router.post('/list/detail/upload',controllerUpload.placeUpload)
 router.post('/list/detail/getMessage', controllerDetail.getMessage)
 router.post('/list/detail/inputMessage', controllerinputMessage.inputMessage)
 router.post('/callback',controllerCallback);
-
+router.get('/list/detail/getAllData', controllerDetail.getAllData);
 module.exports = router;
