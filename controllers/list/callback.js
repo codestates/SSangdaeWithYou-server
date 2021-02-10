@@ -16,10 +16,10 @@ module.exports = async (req, res) => {
       return data.data.access_token;
     })
     .catch((err) => {
-      console.log(err);
+      res.sendStatus(400)
     });
 
-  console.log(access)
+  
 
 
 
@@ -48,61 +48,6 @@ module.exports = async (req, res) => {
           req.session.identifier = username;
         }
       })
-      .catch(err => console.log(err));
+      .catch(err =>  res.sendStatus(400));
       })
-   
- 
-    console.log(info);
-
-    //! 로그아웃! 
-    // const logout = await axios({
-    //   method: 'POST',
-    //   url: "https://kapi.kakao.com/v1/user/unlink",
-    //   headers: {
-    //     Authorization: `Bearer ${access}`
-    //   },
-    // })
-    // .catch(err => console.log(err))
-};
-
-
-// module.exports = async (req, res) => {
-//   console.log("callback!!!! " + req.body.authorizationCode);
-//   let getToken = await axios({
-//     method: "POST",
-//     url: `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${clientID}&client_secret=${clientSecret}&redirect_uri=http://localhost:3000&code=${req.body.authorizationCode}`,
-//     headers: {
-//       "content-type":"application/x-www-form-urlencoded;charset=UTF-8",
-//     }
-    
-//   })
-//   .then(res => res.data.access_token)
-//   .catch(err => {
-//     console.log("에러다!2222")
-//     //res.status(404).send(err)
-//   })
-
-//   console.log("토큰 :" + getToken)
-//   // res.status(200).json({'token': getToken.data.access_token});
-  
-//   // let getInfo = await axios.get("https://kapi.kakao.com/v2/user/me", {
-//   //   headers: {
-//   //     "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-//   //     "Authorization": `Bearer ${getToken.data.access_token}` 
-//   //   }
-//   // }).catch(err => console.log("에러111"));
-//   let getInfo = await axios({
-//     method: "GET",
-//     url: "https://kapi.kakao.com/v2/user/me",
-//     headers: {
-//       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-//        Authorization: `Bearer ${getToken}` 
-//     }
-//   })
-//   .then(result => result.data)
-//   .catch(err => console.log("에러111"));
-
-//   console.log(getInfo);
-
-
-// }
+    }

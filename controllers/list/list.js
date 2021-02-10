@@ -12,6 +12,8 @@ module.exports = {
         attributes: [
           'id',
           'placeName',
+          'latitude',
+          'longitude',
           [
             sequelize.fn(
               'ST_Distance_Sphere',

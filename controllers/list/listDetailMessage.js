@@ -16,9 +16,9 @@ module.exports = {
           username: username,
         },
       })
-      .catch(err => res.status(400).send("입력값이 잘못되었습니다"));
+      .catch(err => res.status(400).send("입력값이 잘못되었습니다."))
 
-      console.log("id :" + userData)
+      
       const result = await message.create({
         smokePlaceId: placeId,
         userId: userData.dataValues.id,

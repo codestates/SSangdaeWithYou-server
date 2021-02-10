@@ -28,6 +28,6 @@ module.exports = {
         const data = await smokeplace.get({ plain: true });
         res.status(200).send('리스트가 추가되었습니다');
       })
-      .catch((err) => console.log(err));
+      .catch((err) => res.status(400).send("입력값이 잘못되었습니다."));
   }},
 };
