@@ -2,11 +2,7 @@ const { user } = require('../../models');
 
 module.exports = {
   userinfo: async (req, res) => {
-    if (!req.session.identifier) {
-      res.sendStatus(400);
-    } else {
 
-    const { email } = req.body;
 
     //console.log(req.session);
     if (!req.session.identifier) {
@@ -16,7 +12,7 @@ module.exports = {
       // 세션 객체에 식별자가 존재한다면
       const id = req.session.identifier;
       const userInfo = await user.findOne({
-        where: { id: id }
+        where: { username: id }
       })
 
       const {
@@ -27,5 +23,5 @@ module.exports = {
       res.status(200).send({ username, nickname, email })
       
     }
-  }}
+  }
 }

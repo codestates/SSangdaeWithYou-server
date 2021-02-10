@@ -19,10 +19,10 @@ module.exports = {
       }]
       
     })
-    .catch(err => console.log(err))
+    .catch(err => res.status(400).send(err))
     if (info) {
       let result = Object.assign({nickname: info[0].dataValues.nickname}, info[0].dataValues.smokePlaces[0].dataValues);
-      console.log(result)
+     
       res.status(200).send(result)
     } 
   }
@@ -80,7 +80,7 @@ module.exports = {
       let data = [];
       for(let k = 0; k < result.length; k++) {
         for(let i = 0; i < result[k].messages.length; i++) {
-          console.log("닉네임: " + result[k].dataValues.nickname + " , " + "message: " + result[k].messages[i].dataValues.message)
+          
           data.push({nickname: result[k].dataValues.nickname, message:result[k].messages[i].dataValues.message})
         }
       }    

@@ -11,7 +11,7 @@ module.exports = {
     const userInfo = await user.findOne({
       where: { username: username, password: password }
     })
-    .catch(err => console.log(err));
+    .catch(err => res.status(400).send("입력값이 잘못되었습니다."));
 
     if (!userInfo) {
       // 회원이 아니라면 
