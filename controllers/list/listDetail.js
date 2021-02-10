@@ -7,7 +7,7 @@ module.exports = {
       res.sendStatus(400);
     } else {
     // placeName, comment, nickname, => 1 : N
-    const { placeId, userId } = req.body; 
+    const { placeId } = req.body; 
     const info = await user.findAll({ 
       attributes: ['nickname'],
       include:[{

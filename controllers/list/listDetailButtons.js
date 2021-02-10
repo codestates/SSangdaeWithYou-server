@@ -8,7 +8,7 @@ module.exports = {
       .findOne({
         attributes: ['userId', 'smokePlaceId', 'isLike', 'isDislike'],
         where: {
-          placeId: numberPlaceId,
+         smokePlaceId: numberPlaceId,
           userId: numberUserId,
         },
       })
@@ -20,7 +20,7 @@ module.exports = {
             likeOrDislike
               .destroy({
                 where: {
-                  placeId: numberPlaceId,
+                  smokePlaceId: numberPlaceId,
                   userId: numberUserId,
                 },
               })
@@ -36,7 +36,7 @@ module.exports = {
           likeOrDislike
             .create({
               userId: numberUserId,
-              placeId: numberPlaceId,
+              smokePlaceId: numberPlaceId,
               isLike: 1,
             })
             .then((data) => {
@@ -58,7 +58,7 @@ module.exports = {
       .findOne({
         attributes: ['userId', 'smokePlaceId', 'isLike', 'isDislike'],
         where: {
-          placeId: numberPlaceId,
+          smokePlaceId: numberPlaceId,
           userId: numberUserId,
         },
       })
@@ -70,7 +70,7 @@ module.exports = {
             likeOrDislike
               .destroy({
                 where: {
-                  placeId: numberPlaceId,
+                  smokePlaceId: numberPlaceId,
                   userId: numberUserId,
                 },
               })
@@ -86,7 +86,7 @@ module.exports = {
           likeOrDislike
             .create({
               userId: numberUserId,
-              placeId: numberPlaceId,
+              smokePlaceId: numberPlaceId,
               isDislike: 1,
             })
             .then((data) =>
