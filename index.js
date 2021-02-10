@@ -32,7 +32,7 @@ app.use(cors({
     "http://localhost:3000",
     "http://localhost:443",
     "https://localhost:443",
-    "https://loccalhost:3000"
+    "https://localhost:3000"
   ],
   credentials: true
 }));
