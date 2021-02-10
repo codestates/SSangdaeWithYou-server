@@ -16,7 +16,7 @@ app.use(
     resave: false,
     saveUninitialized: true, // false 로 설정해주면 cookie가 오지 않음
     cookie: {
-      domain: 'ssangdae.gq',
+      domain: 'localhost',
       path: '/',
       maxAge: 24 * 6 * 60 * 10000,
       sameSite: 'none',
@@ -27,7 +27,9 @@ app.use(
 )
 app.use(bodyParser.json());
 
-app.use(cors());
+app.use(cors({
+  credentials: true
+}));
 
 
 
