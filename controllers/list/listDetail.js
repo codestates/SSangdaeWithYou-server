@@ -89,6 +89,10 @@ module.exports = {
       res.status(200).send('메세지가 없습니다.')
     }
   }},
+  getAllData: async (req, res) => {
+    const data = await smokePlace.findAll().catch(err => res.sendStatus(400));
+    res.status(200).send(data);
+  }
 
     
   
