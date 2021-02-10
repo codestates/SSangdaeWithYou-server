@@ -2,7 +2,7 @@ const { smokePlace, user } = require('../../models');
 
 module.exports = {
   placeUpload: (req, res) => {
-    
+    console.log(req.session);
     if (!req.session.identifier) {
       res.sendStatus(400);
     } else {
