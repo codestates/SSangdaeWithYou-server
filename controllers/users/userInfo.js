@@ -23,10 +23,5 @@ module.exports = {
       res.status(200).send({ username, nickname, email })
       
     }
-<<<<<<< HEAD
   }
 }
-=======
- }
-}
->>>>>>> 8ad96574e594faf0f0f2b970d1ebb55b569216fa
