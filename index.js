@@ -9,9 +9,11 @@ const route = require('./routes/index');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const port = 5000;
+const controllerInfo = require('./controllers/users/userInfo');
+const controllerSign = require('./controllers/users/userSign');
 
 app.use(logger('dev'));
-app.use(cookieParser);
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -38,16 +40,13 @@ app.use(
       maxAge: 24 * 6 * 60 * 10000,
       sameSite: 'none',
       httpOnly: true,
-      secure: true, //https
+      secure: false, //https
     },
   })
 );
 
-app.get('/', (req, res, next) => {
-  console.log('웰컴');
-  next();
-});
-
+app.post('/user/info', controllerInfo.userinfo);
+app.post('/user/sign', controllerSign.sign);
 // process.on('uncaughtException', (err) => {console.log(err)})
 app.use('/', route);
 
