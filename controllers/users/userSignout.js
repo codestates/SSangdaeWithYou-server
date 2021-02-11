@@ -2,9 +2,7 @@ const { user } = require('../../models');
 
 module.exports = {
   signout: (req, res) => {
-    req.session.destroy(()=> {
-      req.session.identifier;
-    });
-
-  }
-}
+    res.clearCookie('id');
+    res.sendStatus(200);
+  },
+};
