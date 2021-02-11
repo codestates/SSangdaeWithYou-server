@@ -8,6 +8,7 @@ const session = require('express-session');
 const route = require('./routes/index');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const port = 5000;
 
 app.use(logger('dev'));
 app.use(cookieParser);
@@ -21,7 +22,7 @@ app.use(
       'https://localhost:3000',
       'https://ssangdaewithyou.com',
     ],
-    // methods: true,
+    methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
     credentials: true,
   })
 );
