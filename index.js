@@ -42,6 +42,11 @@ app.use(
   })
 );
 
+app.get('/', (req, res, next) => {
+  console.log('웰컴');
+  next();
+});
+
 // process.on('uncaughtException', (err) => {console.log(err)})
 app.use('/', route);
 
