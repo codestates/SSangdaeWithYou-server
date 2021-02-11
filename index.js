@@ -9,6 +9,22 @@ const route = require('./routes/index');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+app.use(logger('dev'));
+app.use(cookieParser);
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(
+  cors({
+    origin: [
+      'http://localhost:3000',
+      'https://localhost:3000',
+      'https://ssangdaewithyou.com',
+    ],
+    // methods: true,
+    credentials: true,
+  })
+);
 // express-session
 app.use(
   session({
@@ -23,22 +39,6 @@ app.use(
       httpOnly: true,
       secure: true, //https
     },
-  })
-);
-app.use(logger('tiny'));
-app.use(cookieParser);
-app.use(bodyParser.json());
-// app.use(express.urlencoded({ extended: false }));
-
-app.use(
-  cors({
-    origin: [
-      'http://localhost:3000',
-      'https://localhost:3000',
-      'https://ssangdaewithyou.com',
-    ],
-    // methods: true,
-    credentials: true,
   })
 );
 
