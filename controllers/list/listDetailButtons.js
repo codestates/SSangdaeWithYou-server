@@ -1,15 +1,21 @@
 const { smokePlace, user, likeOrDislike } = require('../../models');
 module.exports = {
-  likeBtn: (req, res) => {
-    const { placeId, userId } = req.body;
+  likeBtn: async (req, res) => {
+    const { placeId } = req.body;
     const numberPlaceId = parseInt(placeId);
-    const numberUserId = parseInt(userId);
+    const username = req.cookies.id;
+    const data = await user.findOne({
+      where: {
+        username: username,
+      },
+    });
+    const userId = data.dataValues.id;
     likeOrDislike
       .findOne({
         attributes: ['userId', 'smokePlaceId', 'isLike', 'isDislike'],
         where: {
-         smokePlaceId: numberPlaceId,
-          userId: numberUserId,
+          smokePlaceId: numberPlaceId,
+          userId: userId,
         },
       })
       .then((data) => {
@@ -21,7 +27,7 @@ module.exports = {
               .destroy({
                 where: {
                   smokePlaceId: numberPlaceId,
-                  userId: numberUserId,
+                  userId: userId,
                 },
               })
               .then((number) => {
@@ -35,7 +41,7 @@ module.exports = {
         } else {
           likeOrDislike
             .create({
-              userId: numberUserId,
+              userId: userId,
               smokePlaceId: numberPlaceId,
               isLike: 1,
             })
@@ -50,16 +56,22 @@ module.exports = {
       })
       .catch((err) => res.status(400).send(err));
   },
-  disLikeBtn: (req, res) => {
-    const { placeId, userId } = req.body;
+  disLikeBtn: async (req, res) => {
+    const { placeId } = req.body;
     const numberPlaceId = parseInt(placeId);
-    const numberUserId = parseInt(userId);
+    const username = req.cookies.id;
+    const data = await user.findOne({
+      where: {
+        username: username,
+      },
+    });
+    const userId = data.dataValues.id;
     likeOrDislike
       .findOne({
         attributes: ['userId', 'smokePlaceId', 'isLike', 'isDislike'],
         where: {
           smokePlaceId: numberPlaceId,
-          userId: numberUserId,
+          userId: userId,
         },
       })
       .then((data) => {
@@ -71,7 +83,7 @@ module.exports = {
               .destroy({
                 where: {
                   smokePlaceId: numberPlaceId,
-                  userId: numberUserId,
+                  userId: userId,
                 },
               })
               .then((number) => {
@@ -85,7 +97,7 @@ module.exports = {
         } else {
           likeOrDislike
             .create({
-              userId: numberUserId,
+              userId: userId,
               smokePlaceId: numberPlaceId,
               isDislike: 1,
             })

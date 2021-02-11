@@ -2,7 +2,7 @@ const { smokePlace, user } = require('../../models');
 
 module.exports = {
   placeUpload: async (req, res) => {
-	  console.log(req.cookies);
+    console.log(req.cookies);
     if (!req.cookies.id) {
       res.sendStatus(400);
     } else {
@@ -13,23 +13,21 @@ module.exports = {
           username: username,
         },
       });
-
-	    console.log(userId);
-         smokePlace
+      smokePlace
         .findOrCreate({
           where: {
             longitude: longitude,
             latitude: latitude,
           },
           defaults: {
-		  userId: userId.dataValues.id,
+            userId: userId.dataValues.id,
             comment: comment,
             placeName: placeName,
           },
         })
-        .then(([smokeplace, created]) => {
+        .then(([smokePlace, created]) => {
           if (!created) {
-            return res.status(400).send('이미 추가된 장소입니다');
+            res.status(400).send('이미 추가된 장소입니다');
           } else {
             res.status(200).send('리스트가 추가되었습니다');
           }
