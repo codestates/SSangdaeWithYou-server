@@ -22,13 +22,15 @@ module.exports = {
           ],
         })
         .catch((err) => res.status(400).send(err));
-      if (info) {
+      if (info.length !== 0) {
         let result = Object.assign(
           { nickname: info[0].dataValues.nickname },
           info[0].dataValues.smokePlaces[0].dataValues
         );
 
         res.status(200).send(result);
+      } else {
+        res.status(400).send('장소가 없습니다');
       }
     }
   },
@@ -44,8 +46,10 @@ module.exports = {
         })
         .catch((err) => res.sendStatus(500));
 
-      if (result) {
+      if (result.length !== 0) {
         res.status(200).send({ count: result.count });
+      } else {
+        res.status(400).send('장소가 없습니다');
       }
     }
   },
@@ -59,15 +63,17 @@ module.exports = {
           where: { smokePlaceId: placeId, isDislike: 1 },
         })
         .catch((err) => res.sendStatus(500));
-
-      if (result) {
+      console.log(result);
+      if (result.length !== 0) {
         res.status(200).send({ count: result.count });
+      } else {
+        res.status(400).send('장소가 없습니다');
       }
     }
   },
   getMessage: async (req, res) => {
     if (!req.cookies.id) {
-      res.sendStatus(400);
+      res.status(400).send('로그인 후 이용해주세요');
     } else {
       // (댓글) placeId, nickname, message => smokePlaces + users + messages => n : n
       const { placeId } = req.body;
@@ -81,8 +87,8 @@ module.exports = {
           },
         })
         .catch((err) => res.sendStatus(500));
-
-      if (result) {
+      console.log(result);
+      if (result.length !== 0) {
         let data = [];
         for (let k = 0; k < result.length; k++) {
           for (let i = 0; i < result[k].messages.length; i++) {

@@ -29,21 +29,22 @@ app.use(
   })
 );
 // express-session
-app.use(
-  session({
-    secret: '@codestates',
-    resave: false,
-    saveUninitialized: true, // false 로 설정해주면 cookie가 오지 않음
-    cookie: {
-      domain: 'ssangdae.gq',
-      path: '/',
-      maxAge: 24 * 6 * 60 * 10000,
-      sameSite: 'none',
-      httpOnly: true,
-      secure: false, //https
-    },
-  })
-);
+// app.use(
+//   session({
+//     secret: '@codestates',
+//     resave: false,
+//     saveUninitialized: true, // false 로 설정해주면 cookie가 오지 않음
+//     cookie: {
+//       domain: 'localhost:3000',
+//       // domain: 'ssangdae.gq',
+//       path: '/',
+//       maxAge: 24 * 6 * 60 * 10000,
+//       sameSite: 'none',
+//       httpOnly: true,
+//       secure: false, //https
+//     },
+//   })
+// );
 
 app.post('/user/info', controllerInfo.userinfo);
 app.post('/user/sign', controllerSign.sign);
