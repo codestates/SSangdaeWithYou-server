@@ -47,9 +47,9 @@ module.exports = {
         .catch((err) => res.sendStatus(500));
 
       if (result.length !== 0) {
-        res.status(200).send({ count: result.count });
+       return res.status(200).send({ count: result.count });
       } else {
-        res.status(400).send('장소가 없습니다');
+       return res.status(400).send('장소가 없습니다');
       }
     }
   },
