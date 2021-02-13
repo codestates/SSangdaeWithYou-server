@@ -7,7 +7,7 @@ const axios = require('axios');
 module.exports =async (req, res) => {
   const access = await axios({
     method: 'POST',
-    url: `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=41920d05f8b54e037d992edc47bb99c2&redirect_uri=https://localhost:3000&code=${req.body.authorizationCode}`,
+    url: `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=41920d05f8b54e037d992edc47bb99c2&redirect_uri=https://ssangdaewithyou.com&code=${req.body.authorizationCode}`,
     headers: {
       'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
     },
