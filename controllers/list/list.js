@@ -22,12 +22,11 @@ module.exports = {
                 sequelize.col('longitude'),
                 sequelize.col('latitude')
               ),
-              sequelize.fn('POINT', lng, lat)
+              [sequelize.fn('POINT', lng, lat), 'ASC'],
             ),
-            'distance', 'ASC'
+            'distance'
           ],
         ],
-        
         limit: 10,
       })
       .then(async (place) => {
