@@ -77,18 +77,17 @@ module.exports = {
     } else {
       // (댓글) placeId, nickname, message => smokePlaces + users + messages => n : n
       const { placeId } = req.body;
-      const result = await message
+      const result = await user
         .findAll({
-          attributes: ['message'],
-          where: { smokePlaceId: placeId },
+          attributes: ['nickname'],
           include: {
-            model: user,
-            attributes: ['nickname'],
+            model: message,
+            attributes: ['message', 'createdAt'],
+            where: { smokePlaceId: placeId }
           },
-          order: [[ message, 'createdAt', 'DESC']],
         })
         .catch((err) => res.sendStatus(500));
-      console.log(result);
+      
       if (result.length !== 0) {
         let data = [];
         for (let k = 0; k < result.length; k++) {
@@ -96,12 +95,15 @@ module.exports = {
             data.push({
               nickname: result[k].dataValues.nickname,
               message: result[k].messages[i].dataValues.message,
+              createdAt: result[k].messages[i].dataValues.createdAt
             });
           }
         }
-        res.status(200).send(data);
+        // console.log(data)
+        data.sort((a, b) => a.createdAt - b.createdAt);
+        return res.status(200).send(data);
       } else {
-        res.status(200).send('메세지가 없습니다.');
+        return res.status(200).send('메세지가 없습니다.');
       }
     }
   },
