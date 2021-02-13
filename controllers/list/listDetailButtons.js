@@ -21,7 +21,7 @@ module.exports = {
       .then((data) => {
         if (data) {
           if (data.isDislike) {
-            res.status(200).send('좋아요와 싫어요를 둘 다 누르실 수 없습니다.');
+            res.status(202).send('좋아요와 싫어요를 둘 다 누르실 수 없습니다.');
           } else {
             likeOrDislike
               .destroy({
@@ -31,7 +31,7 @@ module.exports = {
                 },
               })
               .then((number) => {
-                res.status(200).json({
+                res.status(201).json({
                   isLike: null,
                   data: '좋아요가 취소되었습니다',
                 });
@@ -54,7 +54,7 @@ module.exports = {
             .catch((err) => res.status(400).send(err));
         }
       })
-      .catch((err) => res.status(400).send(err));
+      .catch((err) => res.status(500).send(err));
   },
   disLikeBtn: async (req, res) => {
     const { placeId } = req.body;
@@ -77,7 +77,7 @@ module.exports = {
       .then((data) => {
         if (data) {
           if (data.isLike) {
-            res.status(200).send('좋아요와 싫어요를 둘 다 누르실 수 없습니다.');
+            res.status(202).send('좋아요와 싫어요를 둘 다 누르실 수 없습니다.');
           } else {
             likeOrDislike
               .destroy({
@@ -87,7 +87,7 @@ module.exports = {
                 },
               })
               .then((number) => {
-                res.status(200).json({
+                res.status(201).json({
                   isDislike: null,
                   data: '싫어요가 취소되었습니다',
                 });
@@ -110,6 +110,6 @@ module.exports = {
             .catch((err) => res.status(400).send(err));
         }
       })
-      .catch((err) => res.status(400).send(err));
+      .catch((err) => res.status(500).send(err));
   },
 };
