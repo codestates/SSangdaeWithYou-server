@@ -77,13 +77,13 @@ module.exports = {
     } else {
       // (댓글) placeId, nickname, message => smokePlaces + users + messages => n : n
       const { placeId } = req.body;
-      const result = await user
+      const result = await message
         .findAll({
-          attributes: ['nickname'],
+          attributes: ['message'],
+          where: { smokePlaceId: placeId },
           include: {
-            model: message,
-            attributes: ['message'],
-            where: { smokePlaceId: placeId },
+            model: user,
+            attributes: ['nickname'],
           },
           order: [[ message, 'createdAt', 'DESC']],
         })
