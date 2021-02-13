@@ -85,7 +85,7 @@ module.exports = {
             attributes: ['message'],
             where: { smokePlaceId: placeId },
           },
-          order: [[ {model: message}, 'createdAt', 'DESC']],
+          order: [[ message, 'createdAt', 'DESC']],
         })
         .catch((err) => res.sendStatus(500));
       console.log(result);
