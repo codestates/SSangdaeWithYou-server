@@ -2,7 +2,7 @@ const { user } = require('../../models');
 
 module.exports = {
   userinfo: async (req, res) => {
-    //console.log(req.session);
+    console.log("cookies:  " + req.cookies.id);
     if (!req.cookies.id) {
       // 세션 객체에 식별자가 존재하지 않는다면
       res.status(404).send('로그인 후 이용해주세요');

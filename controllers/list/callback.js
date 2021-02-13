@@ -37,10 +37,24 @@ module.exports =async (req, res) => {
         })
         .then(([user, created]) => {
           if (!created) {
-            req.cookies.id = username;
+            res.cookie('id', username, {
+              domain: 'ssangdae.gq',
+              // domain: 'ssangdae.gq',
+              path: '/',
+              sameSite: 'none',
+              httpOnly: true,
+              secure: true, //true였음 원래 꼭 기억하도록!
+            });
            return res.status(200).send('로그인이 되었습니다');
           } else {
-            req.cookies.id = username;
+            res.cookie('id', username, {
+              domain: 'ssangdae.gq',
+              // domain: 'ssangdae.gq',
+              path: '/',
+              sameSite: 'none',
+              httpOnly: true,
+              secure: true, //true였음 원래 꼭 기억하도록!
+            });
 	   return res.status(200).send('로그인이 되었습니다');
           }
         })
