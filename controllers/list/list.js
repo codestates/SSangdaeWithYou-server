@@ -24,10 +24,10 @@ module.exports = {
               ),
               sequelize.fn('POINT', lng, lat)
             ),
-            'distance',
+            'distance', 'ASC'
           ],
         ],
-        orderBy: 'distance ASC',
+        
         limit: 10,
       })
       .then(async (place) => {
