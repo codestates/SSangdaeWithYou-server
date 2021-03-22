@@ -3,8 +3,9 @@ module.exports = {
   development: {
     username: 'sosick0418',
     password: process.env.DATABASE_PASSWORD,
-    database: 'first-project-database',
-    host: 'first-project-database.cvzikveoyguc.us-east-2.rds.amazonaws.com',
+    database: 'firstprojectdatabase',
+    host:
+      'first-project-database.camswnc9t10z.ap-northeast-2.rds.amazonaws.com',
     dialect: 'mysql',
   },
   test: {
